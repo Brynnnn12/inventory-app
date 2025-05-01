@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.bg-sidebar {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+
+.sidebar-shadow {
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.active-nav-link {
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.active-nav-link:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: white;
+    border-radius: 2px 0 0 2px;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card {
+    border-left: 4px solid;
+}
+
+.stat-card.total {
+    border-left-color: #3b82f6;
+}
+
+.stat-card.low {
+    border-left-color: #ef4444;
+}
+
+.stat-card.categories {
+    border-left-color: #10b981;
+}
+
+.stat-card.value {
+    border-left-color: #f59e0b;
+}
+
+.progress-bar {
+    height: 6px;
+    border-radius: 3px;
+    background: #e5e7eb;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.inventory-table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.inventory-table thead th {
+    position: sticky;
+    top: 0;
+    background: #f9fafb;
+    z-index: 10;
+}
+
+.inventory-table tbody tr:hover {
+    background: #f3f4f6;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-in-stock {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-low-stock {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-out-of-stock {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.search-input {
+    transition: all 0.3s ease;
+    padding-left: 40px;
+}
+
+.search-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.search-icon {
+    left: 12px;
+    color: #9ca3af;
+}
+
+.dropdown-content {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
