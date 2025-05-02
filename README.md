@@ -43,8 +43,8 @@ Sistem inventory kami menggunakan teknologi terkini untuk memberikan pengalaman 
 
 1. Clone repositori:
    ```bash
-   git clone https://github.com/yourusername/inventory-system.git
-   cd inventory-system
+   git clone https://github.com/Brynnnn12/inventory-app.git
+   cd inventory-app
    ```
 
 2. Instal dependensi PHP:
@@ -95,14 +95,10 @@ Sistem inventory kami menggunakan teknologi terkini untuk memberikan pengalaman 
 Setelah melakukan seeding database, Anda dapat login dengan kredensial default berikut:
 
 - **Admin**
-  - Email: admin@example.com
-  - Password: password
+  - Email: admin@gmail.com
+  - Password: admin123
 
-- **Manajer**
-  - Email: manager@example.com  
-  - Password: password
-
-- **Staf**
+- **User**
   - Email: staff@example.com
   - Password: password
 
@@ -111,81 +107,8 @@ Setelah melakukan seeding database, Anda dapat login dengan kredensial default b
 Sistem ini menyertakan tiga peran yang telah ditentukan dengan izin yang berbeda:
 
 - **Admin**: Akses penuh ke semua fitur
-- **Manajer**: Dapat mengelola inventory, penjualan, dan pembelian tetapi tidak dapat mengelola pengguna
-- **Staf**: Akses terbatas untuk melihat inventory dan memproses penjualan
+- **User**: Akses terbatas untuk melihat Mengelola barang masuk dan barang keluar
 
-## Konfigurasi
-
-### Peran dan Izin Kustom
-
-Anda dapat memodifikasi peran dan izin menggunakan package Spatie Laravel-Permission:
-
-```php
-// Tambahkan peran
-php artisan permission:create-role "Manajer Gudang"
-
-// Tambahkan izin
-php artisan permission:create-permission "mengelola stok"
-
-// Tetapkan izin ke peran
-php artisan tinker
-$role = \Spatie\Permission\Models\Role::findByName('Manajer Gudang');
-$role->givePermissionTo('mengelola stok');
-```
-
-### Konfigurasi Tailwind
-
-Konfigurasi Tailwind CSS dapat dimodifikasi di file `tailwind.config.js`.
-
-## Pengembangan
-
-### Building Asset
-
-```bash
-# Build untuk produksi
-npm run build
-
-# Build untuk pengembangan
-npm run dev
-
-# Pantau perubahan
-npm run watch
-```
-
-### Menjalankan Test
-
-```bash
-php artisan test
-```
-
-## Deployment
-
-1. Siapkan lingkungan produksi Anda
-2. Konfigurasi web server Anda (Nginx/Apache)
-3. Tetapkan variabel lingkungan yang sesuai
-4. Jalankan migrasi dalam mode produksi:
-   ```bash
-   php artisan migrate --force
-   ```
-5. Optimalkan Laravel untuk produksi:
-   ```bash
-   php artisan optimize
-   php artisan route:cache
-   php artisan config:cache
-   php artisan view:cache
-   ```
-
-## Kontribusi
-
-1. Fork repositori
-2. Buat branch fitur: `git checkout -b nama-fitur`
-3. Commit perubahan Anda: `git commit -m 'Menambahkan fitur tertentu'`
-4. Push ke branch: `git push origin nama-fitur`
-5. Kirim pull request
-
-## Lisensi
-
-Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
 
 ## Ucapan Terima Kasih
 
@@ -193,4 +116,4 @@ Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) unt
 - [Tailwind CSS](https://tailwindcss.com)
 - [Alpine.js](https://alpinejs.dev)
 - [Spatie Laravel-Permission](https://spatie.be/docs/laravel-permission)
-- 
+ 
