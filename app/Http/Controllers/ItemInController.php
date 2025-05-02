@@ -16,7 +16,12 @@ class ItemInController extends Controller
     public function index()
     {
         //
-        $itemsIn = ItemIn::paginate(10);
+
+        if (Auth::user()->role == 'admin') {
+            $itemsIn = ItemIn::paginate(10);
+        } else {
+            $itemsIn = ItemIn::where('user_id', Auth::user()->id)->paginate(10);
+        }
         return view('dashboard.itemsIn.index', compact('itemsIn'));
     }
 

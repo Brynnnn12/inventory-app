@@ -51,18 +51,13 @@
             </div>
             <h1 class="text-4xl font-bold text-gray-800 mb-4">Selamat Datang</h1>
             <h2 class="text-2xl font-semibold text-blue-600 mb-6">Sistem Manajemen Inventory</h2>
-            <p class="text-lg text-gray-600 mb-8">
-                Solusi lengkap untuk mengelola stok barang dan produk bisnis Anda secara efisien.
-            </p>
+
             <div class="flex justify-center space-x-4">
                 <a href="{{ route('login') }}"
                     class="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition shadow-md">
                     Masuk ke Sistem
                 </a>
-                <a href="{{ route('register') }}"
-                    class="px-6 py-3 border border-blue-600 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition">
-                    Daftar Akun
-                </a>
+
             </div>
         </div>
     </main>

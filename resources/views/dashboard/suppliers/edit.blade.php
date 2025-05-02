@@ -20,6 +20,22 @@
 
                     <x-input-error :messages="$errors->get('name')" class="mt-1" />
                 </div>
+                <div>
+                    <x-input-label for="email" value="Suplier Email" />
+
+                    <x-text-input id="email" name="email" value="{{ old('email', $supplier->email) }}" required />
+
+                    <x-input-error :messages="$errors->get('email')" class="mt-1" />
+                </div>
+                <div>
+                    <x-input-label for="phone_number" value="Suplier Notelpon" class="mb-2" />
+
+                    <x-text-input id="phone_number" name="phone_number"
+                        value="{{ old('phone_number', $supplier->phone_number) }}" required />
+
+                    <x-input-error :messages="$errors->get('phone_number')" class="mt-1" />
+                </div>
+
 
                 <div class="flex justify-end">
                     <button type="submit"

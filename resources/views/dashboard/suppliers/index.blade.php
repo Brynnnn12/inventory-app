@@ -1,11 +1,15 @@
 <x-app-layout>
     <div class="bg-white p-6 rounded-xl shadow-sm card">
+        <x-breadcrumb :links="[
+            'suppliers' => null,
+        ]" />
+
         <!-- Notifikasi Sukses atau Error -->
         <x-dashboard.message />
 
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <h3 class="text-lg font-semibold text-gray-800">Recent Inventory Items</h3>
+            <h3 class="text-lg font-semibold text-gray-800">Daftar Supplier</h3>
             <x-link href="{{ route('dashboard.suppliers.create') }}">
                 <i class="fas fa-plus mr-2"></i> Add Item
             </x-link>
@@ -23,6 +27,12 @@
                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name
                         </th>
                         <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No.Hp
+                        </th>
+                        <th scope="col"
                             class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Action</th>
                     </tr>
@@ -34,6 +44,9 @@
                                 {{ ($suppliers->currentPage() - 1) * $suppliers->perPage() + $index + 1 }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $supplier->name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $supplier->email }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $supplier->phone_number }}
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <a href="{{ route('dashboard.suppliers.edit', $supplier->id) }}"
                                     class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
@@ -48,7 +61,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="3" class="px-6 py-4 text-center text-gray-500">No suppliers found.</td>
+                            <td colspan="5" class="px-6 py-4 text-center text-gray-500">No suppliers found.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -56,20 +69,9 @@
         </div>
 
         <!-- Pagination -->
-        <div class="px-6 py-4 flex items-center justify-between border-t border-gray-200">
-            <div class="text-sm text-gray-500">
-                Showing
-                <span class="font-medium">{{ $suppliers->firstItem() }}</span>
-                to
-                <span class="font-medium">{{ $suppliers->lastItem() }}</span>
-                of
-                <span class="font-medium">{{ $suppliers->total() }}</span>
-                items
-            </div>
-            <div>
-                {{ $suppliers->links() }}
-            </div>
-        </div>
+
+        <x-paginate :paginator="$suppliers" />
+
 
     </div>
 </x-app-layout>

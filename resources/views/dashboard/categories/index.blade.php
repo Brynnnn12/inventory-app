@@ -1,13 +1,17 @@
 <x-app-layout>
     <div class="bg-white p-6 rounded-xl shadow-sm card">
+        <x-breadcrumb :links="[
+            'categories' => null,
+        ]" />
+
         <!-- Notifikasi Sukses atau Error -->
         <x-dashboard.message />
 
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <h3 class="text-lg font-semibold text-gray-800">Recent Inventory Items</h3>
+            <h3 class="text-lg font-semibold text-gray-800">Daftar Kategori</h3>
             <x-link href="{{ route('dashboard.categories.create') }}">
-                <i class="fas fa-plus mr-2"></i> Add Item
+                <i class="fas fa-plus mr-2"></i> Add Category
             </x-link>
         </div>
 
@@ -56,20 +60,9 @@
         </div>
 
         <!-- Pagination -->
-        <div class="px-6 py-4 flex items-center justify-between border-t border-gray-200">
-            <div class="text-sm text-gray-500">
-                Showing
-                <span class="font-medium">{{ $categories->firstItem() }}</span>
-                to
-                <span class="font-medium">{{ $categories->lastItem() }}</span>
-                of
-                <span class="font-medium">{{ $categories->total() }}</span>
-                items
-            </div>
-            <div>
-                {{ $categories->links() }}
-            </div>
-        </div>
+
+        <x-paginate :paginator="$categories" />
+
 
     </div>
 </x-app-layout>

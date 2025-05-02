@@ -6,6 +6,7 @@ use App\Http\Requests\ItemsOutRequest;
 use App\Models\ItemOut;
 use App\Models\Items;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ItemOutController extends Controller
 {
@@ -15,7 +16,12 @@ class ItemOutController extends Controller
     public function index()
     {
         //
-        $itemsOut = ItemOut::paginate(10);
+
+        if (Auth::user()->role == 'admin') {
+            $itemsOut = ItemOut::paginate(10);
+        } else {
+            $itemsOut = ItemOut::where('user_id', Auth::user()->id)->paginate(10);
+        }
         return view('dashboard.itemsOut.index', compact('itemsOut'));
     }
 

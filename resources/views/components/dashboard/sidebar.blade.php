@@ -7,44 +7,55 @@
                     d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
         </div>
-        <a href="index.html" class="text-white text-2xl font-bold hover:text-gray-300">InventoryPro</a>
+        <a href="index.html" class="text-white text-2xl font-bold hover:text-gray-300">Sistem Inventory</a>
     </div>
 
     <nav class="text-white text-base font-semibold pt-6 px-4">
-        <a href="index.html" class="flex items-center active-nav-link text-white py-3 pl-4 nav-item">
+        <a href="{{ route('dashboard') }}" class="flex items-center active-nav-link text-white py-3 pl-4 nav-item">
             <i class="fas fa-tachometer-alt mr-3 text-blue-300"></i>
             Dashboard
         </a>
-        <a href="{{ route('dashboard.items.index') }}"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
-            <i class="fas fa-boxes mr-3 text-blue-300"></i>
-            Inventory Items
-        </a>
-        <a href="{{ route('dashboard.categories.index') }}"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
-            <i class="fas fa-tags mr-3 text-blue-300"></i>
-            Categories
-        </a>
-        <a href="{{ route('dashboard.suppliers.index') }}"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
-            <i class="fas fa-truck mr-3 text-blue-300"></i>
-            Suppliers
-        </a>
+        @role('admin')
+            <a href="{{ route('dashboard.items.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-boxes mr-3 text-blue-300"></i>
+                Barang Inventory
+            </a>
+            <a href="{{ route('dashboard.categories.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-tags mr-3 text-blue-300"></i>
+                Kategori
+            </a>
+            <a href="{{ route('dashboard.suppliers.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-truck mr-3 text-blue-300"></i>
+                Suppliers
+            </a>
 
-        <a href="{{ route('dashboard.itemsIn.index') }}"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
-            <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
-            Barang Masuk
-        </a>
-        <a href="{{ route('dashboard.itemsOut.index') }}"
-            class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
-            <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
-            Barang Keluar
-        </a>
-        <a href="reports.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
-            <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
-            Reports
-        </a>
+            <a href="{{ route('dashboard.itemsIn.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
+                Barang Masuk
+            </a>
+            <a href="{{ route('dashboard.itemsOut.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
+                Barang Keluar
+            </a>
+        @endrole
+        @role('user')
+            <a href="{{ route('dashboard.itemsIn.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
+                Barang Masuk
+            </a>
+            <a href="{{ route('dashboard.itemsOut.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-chart-bar mr-3 text-blue-300"></i>
+                Barang Keluar
+            </a>
+        @endrole
+
 
     </nav>
 

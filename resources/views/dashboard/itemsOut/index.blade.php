@@ -1,11 +1,15 @@
 <x-app-layout>
     <div class="bg-white p-6 rounded-xl shadow-sm card">
+        <x-breadcrumb :links="[
+            'itemsOut' => null,
+        ]" />
+
         <!-- Notifikasi Sukses atau Error -->
         <x-dashboard.message />
 
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <h3 class="text-lg font-semibold text-gray-800">Recent Inventory Items</h3>
+            <h3 class="text-lg font-semibold text-gray-800">Daftar Barang Keluar</h3>
             <x-link href="{{ route('dashboard.itemsOut.create') }}">
                 <i class="fas fa-plus mr-2"></i> Add Item
             </x-link>
@@ -75,20 +79,8 @@
         </div>
 
         <!-- Pagination -->
-        <div class="px-6 py-4 flex items-center justify-between border-t border-gray-200">
-            <div class="text-sm text-gray-500">
-                Showing
-                <span class="font-medium">{{ $itemsOut->firstItem() }}</span>
-                to
-                <span class="font-medium">{{ $itemsOut->lastItem() }}</span>
-                of
-                <span class="font-medium">{{ $itemsOut->total() }}</span>
-                items
-            </div>
-            <div>
-                {{ $itemsOut->links() }}
-            </div>
-        </div>
+        <x-paginate :paginator="$itemsOut" />
+
 
     </div>
 </x-app-layout>

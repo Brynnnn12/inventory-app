@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemInController;
 use App\Http\Controllers\ItemOutController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SuppliersController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,11 +23,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('dashboard')->name('dashboard.')->group(function () {
-        Route::resource('categories', CategoriesController::class);
-        Route::resource('suppliers', SuppliersController::class);
-        Route::resource('items', ItemsController::class);
-        Route::resource('itemsIn', ItemInController::class);
-        Route::resource('itemsOut', ItemOutController::class);
+        Route::middleware(['auth', 'role:admin'])->group(function () {
+            Route::resource('categories', CategoriesController::class);
+            Route::resource('suppliers', SuppliersController::class);
+            Route::resource('items', ItemsController::class);
+        });
+
+        Route::middleware(['auth', 'role:user|admin'])->group(function () {
+            Route::resource('itemsIn', ItemInController::class);
+            Route::resource('itemsOut', ItemOutController::class);
+        });
     });
 });
 
