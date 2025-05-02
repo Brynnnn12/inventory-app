@@ -52,6 +52,7 @@ class ItemInController extends Controller
         // Simpan perubahan stok barang
         $item->save();
 
+
         // Simpan data ItemIn
         ItemIn::create($data);
 

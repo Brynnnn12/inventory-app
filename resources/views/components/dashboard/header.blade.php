@@ -13,8 +13,8 @@
         <div x-data="{ dropdownOpen: false }" class="relative">
             <button @click="dropdownOpen = !dropdownOpen"
                 class="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-200 hover:border-blue-500 focus:outline-none transition">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=500&q=80"
-                    alt="Profile" class="w-full h-full object-cover">
+                <span
+                    class="font-bold text-lg">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}{{ strtoupper(substr(Auth::user()->name, strpos(Auth::user()->name, ' ') + 1, 1)) }}</span>
             </button>
             <!-- Overlay -->
             <button x-show="dropdownOpen" @click="dropdownOpen = false"

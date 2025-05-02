@@ -34,7 +34,7 @@
         <div class="bg-white p-6 rounded-xl shadow-sm card stat-card low">
             <div class="flex justify-between items-start">
                 <div>
-                    <p class="text-gray-500 text-sm font-medium">Low Stock</p>
+                    <p class="text-gray-500 text-sm font-medium">Items In</p>
                     <h3 class="text-2xl font-bold text-gray-800 mt-1">47</h3>
                     <p class="text-red-500 text-xs font-medium mt-2 flex items-center">
                         <i class="fas fa-arrow-up mr-1"></i> 5.2% from last month
@@ -49,7 +49,7 @@
         <div class="bg-white p-6 rounded-xl shadow-sm card stat-card categories">
             <div class="flex justify-between items-start">
                 <div>
-                    <p class="text-gray-500 text-sm font-medium">Categories</p>
+                    <p class="text-gray-500 text-sm font-medium">Items out</p>
                     <h3 class="text-2xl font-bold text-gray-800 mt-1">24</h3>
                     <p class="text-green-500 text-xs font-medium mt-2 flex items-center">
                         <i class="fas fa-arrow-up mr-1"></i> 2 new this month
@@ -64,7 +64,7 @@
         <div class="bg-white p-6 rounded-xl shadow-sm card stat-card value">
             <div class="flex justify-between items-start">
                 <div>
-                    <p class="text-gray-500 text-sm font-medium">Inventory Value</p>
+                    <p class="text-gray-500 text-sm font-medium">Inventory</p>
                     <h3 class="text-2xl font-bold text-gray-800 mt-1">$124,589</h3>
                     <p class="text-green-500 text-xs font-medium mt-2 flex items-center">
                         <i class="fas fa-arrow-up mr-1"></i> 8.3% from last month
@@ -98,221 +98,9 @@
         </div>
 
         <!-- Stock Levels -->
-        <div class="bg-white p-6 rounded-xl shadow-sm card">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">Stock Levels</h3>
-            <div class="space-y-4">
-                <div>
-                    <div class="flex justify-between text-sm mb-1">
-                        <span class="font-medium">In Stock</span>
-                        <span>824 items (66%)</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 66%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between text-sm mb-1">
-                        <span class="font-medium">Low Stock</span>
-                        <span>47 items (4%)</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill bg-yellow-500" style="width: 4%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between text-sm mb-1">
-                        <span class="font-medium">Out of Stock</span>
-                        <span>12 items (1%)</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill bg-red-500" style="width: 1%"></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex justify-between text-sm mb-1">
-                        <span class="font-medium">Overstock</span>
-                        <span>365 items (29%)</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill bg-purple-500" style="width: 29%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-dashboard.stock :items="$items" :itemsin="$itemsin" :itemsout="$itemsout" />
+
     </div>
 
-    <!-- Inventory Table -->
-    <div class="bg-white p-6 rounded-xl shadow-sm card">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <h3 class="text-lg font-semibold text-gray-800">Recent Inventory Items</h3>
-            <button
-                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors duration-300 mt-4 md:mt-0">
-                <i class="fas fa-plus mr-2"></i> Add Item
-            </button>
-        </div>
-        <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 inventory-table">
-                <thead class="bg-gray-50">
-                    <tr>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Item</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Category</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Stock</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Price</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Status</th>
-                        <th scope="col"
-                            class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Action</th>
-                    </tr>
-                </thead>
-                <tbody class="bg-white divide-y divide-gray-200">
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div
-                                    class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-box text-blue-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">Premium Widget</div>
-                                    <div class="text-sm text-gray-500">SKU: WDG-001</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Widgets</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">128</div>
-                            <div class="text-xs text-gray-500">Min: 50</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$24.99</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="status-badge status-in-stock">In Stock</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div
-                                    class="flex-shrink-0 h-10 w-10 bg-green-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-cog text-green-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">Deluxe Gizmo</div>
-                                    <div class="text-sm text-gray-500">SKU: GZM-205</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Gizmos</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">42</div>
-                            <div class="text-xs text-gray-500">Min: 50</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$49.99</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="status-badge status-low-stock">Low Stock</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div
-                                    class="flex-shrink-0 h-10 w-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-tools text-purple-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">Basic Toolset</div>
-                                    <div class="text-sm text-gray-500">SKU: TOL-112</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Tools</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">0</div>
-                            <div class="text-xs text-gray-500">Min: 10</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$19.99</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="status-badge status-out-of-stock">Out of Stock</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex items-center">
-                                <div
-                                    class="flex-shrink-0 h-10 w-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-box-open text-yellow-600"></i>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="text-sm font-medium text-gray-900">Standard Container</div>
-                                    <div class="text-sm text-gray-500">SKU: CNT-308</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Containers</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-gray-900">256</div>
-                            <div class="text-xs text-gray-500">Min: 100</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">$12.99</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <span class="status-badge status-in-stock">In Stock</span>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a href="#" class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="px-6 py-4 flex items-center justify-between border-t border-gray-200">
-            <div class="text-sm text-gray-500">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">4</span> of <span
-                    class="font-medium">1248</span> items
-            </div>
-            <div class="flex space-x-2">
-                <button
-                    class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    Previous
-                </button>
-                <button
-                    class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-white bg-blue-600 hover:bg-blue-700">
-                    1
-                </button>
-                <button
-                    class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    2
-                </button>
-                <button
-                    class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    3
-                </button>
-                <button
-                    class="px-3 py-1 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    Next
-                </button>
-            </div>
-        </div>
-    </div>
+
 </x-app-layout>
