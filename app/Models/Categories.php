@@ -12,13 +12,11 @@ class Categories extends Model
 
     protected $table = 'categories';
 
-
-    Protected $guarded = ['id'];
+    //
+    protected $guarded = ['id'];
 
     public function items()
     {
         return $this->hasMany(Items::class);
     }
-    
-
 }

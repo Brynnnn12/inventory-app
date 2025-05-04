@@ -7,6 +7,7 @@ use App\Http\Controllers\ItemOutController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SuppliersController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,9 +26,11 @@ Route::middleware('auth')->group(function () {
             Route::resource('categories', CategoriesController::class);
             Route::resource('suppliers', SuppliersController::class);
             Route::resource('items', ItemsController::class);
+            Route::resource('users', UserController::class);
         });
 
         Route::middleware(['auth', 'role:user|admin'])->group(function () {
+
             Route::resource('itemsIn', ItemInController::class);
             Route::resource('itemsOut', ItemOutController::class);
         });

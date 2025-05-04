@@ -15,11 +15,12 @@ class ItemOutController extends Controller
      */
     public function index()
     {
-        //
 
-        if (Auth::user()->role == 'admin') {
+        // jika user adalah admin, tampilkan semua data
+        if (Auth::user()->hasRole('admin')) {
             $itemsOut = ItemOut::paginate(10);
         } else {
+            // jika user bukan admin, tampilkan data sesuai user yang login
             $itemsOut = ItemOut::where('user_id', Auth::user()->id)->paginate(10);
         }
         return view('dashboard.itemsOut.index', compact('itemsOut'));
@@ -30,8 +31,9 @@ class ItemOutController extends Controller
      */
     public function create()
     {
-        //
+        //ambil item yang ada di database dan ambil id dan name
         $items = Items::pluck('name', 'id');
+        //mengembalikan view create dengan data items
         return view('dashboard.itemsOut.create', compact('items'));
     }
 

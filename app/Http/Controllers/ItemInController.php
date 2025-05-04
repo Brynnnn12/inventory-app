@@ -17,10 +17,10 @@ class ItemInController extends Controller
     {
         //
 
-        if (Auth::user()->role == 'admin') {
-            $itemsIn = ItemIn::paginate(10);
+        if (Auth::user()->hasRole('admin')) {
+            $itemsIn = ItemIn::with('item')->orderBy('created_at', 'desc')->paginate(10);
         } else {
-            $itemsIn = ItemIn::where('user_id', Auth::user()->id)->paginate(10);
+            $itemsIn = ItemIn::with('item')->where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(10);
         }
         return view('dashboard.itemsIn.index', compact('itemsIn'));
     }

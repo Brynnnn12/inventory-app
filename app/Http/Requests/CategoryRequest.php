@@ -30,7 +30,8 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name.required' => 'Category name tidak boleh kosong.',
-            'name.unique' => 'Category name already exists.',
+            'name.unique' => 'Category harus unik.',
+            'name.string' => 'Category name harus berupa string.',
             'name.min' => 'Category nama minimal 3 characters.',
             'name.max' => 'Category nama maximal 50 characters.',
         ];

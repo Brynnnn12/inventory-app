@@ -30,11 +30,14 @@ class ItemsOutRequest extends FormRequest
     public function messages()
     {
         return [
-            'item_id.required'  => 'Item is required',
-            'quantity.required' => 'Quantity is required',
-            'quantity.integer'  => 'Quantity must be an integer',
-            'quantity.min'      => 'Quantity must be at least 1',
-            'date_out.required'  => 'Date in is required',
+            'item_id.required'  => 'Item harus diisi',
+            'item_id.exists'    => 'Item tidak ditemukan',
+            'quantity.required' => 'Quantity harus diisi',
+            'quantity.integer'  => 'Quantity harus berupa angka',
+            'quantity.min'      => 'Quantity minimal 1 karakter',
+            'date_out.date'     => 'Tanggal keluar harus berupa tanggal yang valid',
+            'date_out.after_or_equal' => 'Tanggal keluar harus sama atau setelah hari ini',
+            'date_out.required'  => 'Tanggal keluar harus diisi',
         ];
     }
 }

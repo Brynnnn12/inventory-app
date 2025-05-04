@@ -48,6 +48,10 @@
             class="flex items-center text-white py-2 pl-2 nav-item hover:opacity-100 opacity-75">
             <i class="fas fa-boxes mr-3 text-blue-300"></i> Barang Inventory
         </a>
+        <a href="{{ route('dashboard.users.index') }}"
+            class="flex items-center text-white py-2 pl-2 nav-item hover:opacity-100 opacity-75">
+            <i class="fas fa-users mr-3 text-blue-300"></i> Karyawan
+        </a>
         <a href="{{ route('dashboard.categories.index') }}"
             class="flex items-center text-white py-2 pl-2 nav-item hover:opacity-100 opacity-75">
             <i class="fas fa-tags mr-3 text-blue-300"></i> Kategori

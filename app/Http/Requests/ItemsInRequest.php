@@ -24,17 +24,20 @@ class ItemsInRequest extends FormRequest
         return [
             'item_id'  => 'required|exists:items,id',
             'quantity' => 'required|integer|min:1',
-            'date_in'  => 'required|date',
+            'date_in'  => 'required|date|after_or_equal:today',
         ];
     }
     public function messages()
     {
         return [
-            'item_id.required'  => 'Item is required',
-            'quantity.required' => 'Quantity is required',
-            'quantity.integer'  => 'Quantity must be an integer',
-            'quantity.min'      => 'Quantity must be at least 1',
-            'date_in.required'  => 'Date in is required',
+            'item_id.required'  => 'Item harus diisi',
+            'quantity.required' => 'Quantity harus diisi',
+            'item_id.exists'    => 'Item tidak ditemukan',
+            'quantity.integer'  => 'Quantity harus berupa angka',
+            'quantity.min'      => 'Quantity minimal 1 karakter',
+            'date_in.required'  => 'Tanggal masuk harus diisi',
+            'date_in.date'      => 'Tanggal masuk harus berupa tanggal yang valid',
+            'date_in.after_or_equal' => 'Tanggal masuk harus sama atau setelah hari ini',
         ];
     }
 }

@@ -7,7 +7,8 @@
                     d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
         </div>
-        <a href="index.html" class="text-white text-2xl font-bold hover:text-gray-300">Sistem Inventory</a>
+        <a href="{{ route('dashboard') }}" class="text-white text-2xl font-bold hover:text-gray-300">Sistem
+            Inventory</a>
     </div>
 
     <nav class="text-white text-base font-semibold pt-6 px-4">
@@ -20,6 +21,11 @@
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
                 <i class="fas fa-boxes mr-3 text-blue-300"></i>
                 Barang Inventory
+            </a>
+            <a href="{{ route('dashboard.users.index') }}"
+                class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">
+                <i class="fas fa-users mr-3 text-blue-300"></i>
+                Karyawan
             </a>
             <a href="{{ route('dashboard.categories.index') }}"
                 class="flex items-center text-white opacity-75 hover:opacity-100 py-3 pl-4 nav-item">

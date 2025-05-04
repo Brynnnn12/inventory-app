@@ -30,10 +30,9 @@
 
                 <!-- Tombol Login/Register -->
                 <div class="flex items-center space-x-3">
+
                     <a href="{{ route('login') }}"
-                        class="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-800 transition">Login</a>
-                    <a href="{{ route('register') }}"
-                        class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">Register</a>
+                        class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">Login</a>
                 </div>
             </div>
         </div>
@@ -53,7 +52,7 @@
             <h2 class="text-2xl font-semibold text-blue-600 mb-6">Sistem Manajemen Inventory</h2>
 
             <div class="flex justify-center space-x-4">
-                <a href="{{ route('login') }}"
+                <a href="{{ route('dashboard') }}"
                     class="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition shadow-md">
                     Masuk ke Sistem
                 </a>
