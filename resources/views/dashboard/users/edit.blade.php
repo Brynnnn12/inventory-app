@@ -11,7 +11,7 @@
         <form action="{{ route('dashboard.users.update', $user) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="space-y-6 max-w-lg">
+            <div class="space-y-6 max-w-6xl">
                 <div>
                     <x-input-label for="name" value="Name" />
 

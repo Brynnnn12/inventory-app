@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="bg-white p-6 rounded-xl shadow-sm card">
         <x-breadcrumb :links="[
-            'itemsOut' => null,
+            'Barang Keluar' => null,
         ]" />
 
         <!-- Notifikasi Sukses atau Error -->

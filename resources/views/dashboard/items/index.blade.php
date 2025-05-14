@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="bg-white p-6 rounded-xl shadow-sm card">
         <x-breadcrumb :links="[
-            'items' => null,
+            'Barang' => null,
         ]" />
 
         <!-- Notifikasi Sukses atau Error -->
@@ -58,17 +58,12 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $item->stock }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $item->unit }}</td>
+
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('dashboard.items.edit', $item) }}"
-                                    class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                                <form action="{{ route('dashboard.items.destroy', $item) }}" method="POST"
-                                    class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure?')"
-                                        class="text-red-600 hover:text-red-900">Delete</button>
-                                </form>
+                                <x-action-buttons :item="$item" editRoute="dashboard.items.edit"
+                                    deleteRoute="dashboard.items.destroy" />
                             </td>
+
                         </tr>
                     @empty
                         <tr>

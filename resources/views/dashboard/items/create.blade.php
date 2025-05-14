@@ -10,7 +10,7 @@
 
         <form action="{{ route('dashboard.items.store') }}" method="POST">
             @csrf
-            <div class="space-y-8 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-1 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
                 {{-- Name --}}
                 <div>
                     <x-input-label for="name" value="Item Name" />

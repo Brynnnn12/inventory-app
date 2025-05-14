@@ -10,7 +10,7 @@
 
         <form action="{{ route('dashboard.suppliers.store') }}" method="POST">
             @csrf
-            <div class="space-y-6 max-w-lg">
+            <div class="space-y-6 max-w-6xl">
                 <div>
                     <x-input-label for="name" value="Suplier Name" />
 

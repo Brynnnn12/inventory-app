@@ -11,7 +11,7 @@
         <form action="{{ route('dashboard.itemsIn.update', $itemsIn) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="space-y-8 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
 
                 {{-- Pilih Item --}}
                 <div>

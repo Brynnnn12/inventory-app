@@ -12,7 +12,7 @@
             @csrf
             @method('PUT')
 
-            <div class="space-y-6 max-w-lg">
+            <div class="space-y-6 max-w-6xl">
                 <div>
                     <x-input-label for="name" value="Suplier Name" />
 
