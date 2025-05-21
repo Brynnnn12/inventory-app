@@ -49,10 +49,10 @@ body {
     overflow: hidden;
 }
 
-.card:hover {
+/* .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .stat-card {
     border-left: 4px solid;
@@ -86,7 +86,7 @@ body {
     background: linear-gradient(90deg, #3b82f6, #1d4ed8);
 }
 
-.inventory-table {
+/* .inventory-table {
     border-collapse: separate;
     border-spacing: 0;
 }
@@ -100,7 +100,7 @@ body {
 
 .inventory-table tbody tr:hover {
     background: #f3f4f6;
-}
+} */
 
 .status-badge {
     padding: 4px 8px;

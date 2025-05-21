@@ -4,14 +4,12 @@
             'Karyawan' => null,
         ]" />
 
-        <!-- Notifikasi Sukses atau Error -->
-        <x-dashboard.message />
 
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <h3 class="text-lg font-semibold text-gray-800">Daftar Karyawan</h3>
             <x-link href="{{ route('dashboard.users.create') }}">
-                <i class="fas fa-plus mr-2"></i> Add Item
+                <i class="fas fa-plus mr-2"></i> Tambah Karyawan
             </x-link>
         </div>
 
@@ -49,15 +47,8 @@
                                 {{ $user->getRoleNames()->join(', ') }}</td>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('dashboard.users.edit', $user->id) }}"
-                                    class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                                <form action="{{ route('dashboard.users.destroy', $user) }}" method="POST"
-                                    class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure?')"
-                                        class="text-red-600 hover:text-red-900">Delete</button>
-                                </form>
+                                <x-action-buttons :item="$user" editRoute="dashboard.users.edit"
+                                    deleteRoute="dashboard.users.destroy" />
                             </td>
                         </tr>
                     @empty

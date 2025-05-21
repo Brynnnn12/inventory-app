@@ -75,11 +75,13 @@ class UserController extends Controller
             'name'     => $data['name'],
             'email'    => $data['email'],
         ]);
-        if ($data['password']) {
+        // Periksa apakah password ada dan tidak kosong
+        if (isset($data['password']) && !empty($data['password'])) {
             $user->update([
                 'password' => bcrypt($data['password']),
             ]);
         }
+
         $user->syncRoles($data['role']);
         return redirect()->route('dashboard.users.index')->with('success', 'User updated successfully.');
     }

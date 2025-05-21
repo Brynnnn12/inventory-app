@@ -15,19 +15,29 @@
 
     <!-- Styles & Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        [x-cloak] {
+            display: none !important;
+        }
+    </style>
 
 
 </head>
 
 <body x-data="{ isOpen: false }" class="bg-gray-50 flex h-screen">
 
+    <!-- Notifikasi Sukses atau Error -->
+    <x-dashboard.message />
+
     <!-- Sidebar Component -->
     <x-dashboard.sidebar />
+
+
 
     <div class="w-full flex flex-col h-screen overflow-y-hidden">
         <!-- Desktop Header -->
         <x-dashboard.header />
-        <div class="w-full overflow-x-hidden border-t flex flex-col">
+        <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
                 {{ $slot }}
             </main>

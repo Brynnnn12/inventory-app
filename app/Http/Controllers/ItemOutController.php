@@ -18,10 +18,12 @@ class ItemOutController extends Controller
 
         // jika user adalah admin, tampilkan semua data
         if (Auth::user()->hasRole('admin')) {
-            $itemsOut = ItemOut::paginate(10);
+            $itemsOut = ItemOut::with('item')->paginate(10);
         } else {
             // jika user bukan admin, tampilkan data sesuai user yang login
-            $itemsOut = ItemOut::where('user_id', Auth::user()->id)->paginate(10);
+            $itemsOut = ItemOut::where('user_id', Auth::user()->id)->with('item')
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
         }
         return view('dashboard.itemsOut.index', compact('itemsOut'));
     }

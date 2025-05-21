@@ -15,7 +15,7 @@
                 {{-- Pilih Item --}}
                 <div>
                     <x-input-label for="item_id" value="Pilih Barang" />
-                    <select name="item_id" id="item_id" class="w-full border-gray-300 rounded-lg">
+                    <select name="item_id" id="item_id" class="w-full mt-1 border-gray-300 rounded-lg">
                         @foreach ($items as $id => $name)
                             <option value="{{ $id }}" {{ old('item_id') == $id ? 'selected' : '' }}>
                                 {{ $name }}
@@ -43,10 +43,9 @@
 
             {{-- Tombol Simpan --}}
             <div class="flex justify-end mt-6">
-                <button type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors duration-300">
+                <x-primary-button>
                     <i class="fas fa-save mr-2"></i> Simpan
-                </button>
+                </x-primary-button>
             </div>
         </form>
     </div>

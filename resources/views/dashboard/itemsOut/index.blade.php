@@ -4,14 +4,12 @@
             'Barang Keluar' => null,
         ]" />
 
-        <!-- Notifikasi Sukses atau Error -->
-        <x-dashboard.message />
 
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <h3 class="text-lg font-semibold text-gray-800">Daftar Barang Keluar</h3>
             <x-link href="{{ route('dashboard.itemsOut.create') }}">
-                <i class="fas fa-plus mr-2"></i> Add Item
+                <i class="fas fa-plus mr-2"></i> Tambah Barang Keluar
             </x-link>
         </div>
 
@@ -53,20 +51,14 @@
 
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemOut->item->name }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemOut->user->name }}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                {{ $itemOut->item->supplier->name }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemOut->quantity }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemOut->date_out }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('dashboard.itemsOut.edit', $itemOut) }}"
-                                    class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                                <form action="{{ route('dashboard.itemsOut.destroy', $itemOut) }}" method="POST"
-                                    class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure?')"
-                                        class="text-red-600 hover:text-red-900">Delete</button>
-                                </form>
+                                <x-action-buttons :item="$itemOut" editRoute="dashboard.itemsOut.edit"
+                                    deleteRoute="dashboard.itemsOut.destroy" />
                             </td>
                         </tr>
                     @empty

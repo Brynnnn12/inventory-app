@@ -1,10 +1,10 @@
 <x-app-layout>
     <div class="bg-white p-6 rounded-xl shadow-sm card">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-            <h3 class="text-lg font-semibold text-gray-800">Create New Item</h3>
+            <h3 class="text-lg font-semibold text-gray-800">Edit Barang</h3>
             <a href="{{ route('dashboard.items.index') }}"
                 class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-lg flex items-center transition-colors duration-300 mt-4 md:mt-0">
-                <i class="fas fa-arrow-left mr-2"></i> Back to items
+                <i class="fas fa-arrow-left mr-2"></i> Kembali
             </a>
         </div>
 
@@ -67,10 +67,9 @@
 
             {{-- Button --}}
             <div class="flex justify-end mt-6">
-                <button type="submit"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition-colors duration-300">
+                <x-primary-button>
                     <i class="fas fa-save mr-2"></i> Save
-                </button>
+                </x-primary-button>
             </div>
         </form>
     </div>

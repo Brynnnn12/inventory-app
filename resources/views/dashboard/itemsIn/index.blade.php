@@ -1,23 +1,22 @@
 <x-app-layout>
-    <x-breadcrumb :links="[
-        'Barang Masuk' => null,
-    ]" />
 
     <div class="bg-white p-6 rounded-xl shadow-sm card">
-        <!-- Notifikasi Sukses atau Error -->
-        <x-dashboard.message />
+        <x-breadcrumb :links="[
+            'Barang Masuk' => null,
+        ]" />
+
 
         <!-- Header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
             <h3 class="text-lg font-semibold text-gray-800">Daftar Barang Masuk</h3>
             <x-link href="{{ route('dashboard.itemsIn.create') }}">
-                <i class="fas fa-plus mr-2"></i> Add Item
+                <i class="fas fa-plus mr-2"></i> Tambah Barang Masuk
             </x-link>
         </div>
 
         <!-- Table -->
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 inventory-table">
+            <table class="min-w-full divide-y divide-gray-200 ">
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col"
@@ -52,19 +51,14 @@
 
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemIn->item->name }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemIn->user->name }}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
+                                {{ $itemIn->item->supplier->name }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemIn->quantity }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{{ $itemIn->date_in }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                <a href="{{ route('dashboard.itemsIn.edit', $itemIn) }}"
-                                    class="text-blue-600 hover:text-blue-900 mr-3">Edit</a>
-                                <form action="{{ route('dashboard.itemsIn.destroy', $itemIn) }}" method="POST"
-                                    class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure?')"
-                                        class="text-red-600 hover:text-red-900">Delete</button>
+                                <x-action-buttons :item="$itemIn" editRoute="dashboard.itemsIn.edit"
+                                    deleteRoute="dashboard.itemsIn.destroy" />
                                 </form>
                             </td>
 
